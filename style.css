@@ -88,9 +88,9 @@ body {
   color: #ffcc00;
 }
 
-.title {
+.ti {
   color: #141b4d;
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -853,6 +853,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .ti {
+    font-size: 2rem;
+  }
+
   .reviews-header {
     margin: 0;
   }
