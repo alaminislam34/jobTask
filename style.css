@@ -311,6 +311,37 @@ body {
   display: block;
 }
 
+.checkout-container {
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.checkout-summary {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: #28a745;
+  color: #fff;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.checkout-btn:hover {
+  background-color: #218838;
+}
+
 @media (max-width: 768px) {
   .btn-container {
     flex-direction: column-reverse;

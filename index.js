@@ -2,12 +2,15 @@ const addToCartBtn = document.querySelector(".btn");
 const cartDrawer = document.getElementById("cartDrawer");
 const closeCartBtn = document.getElementById("closeCart");
 
-const quantityElement = document.querySelector(".content .quantity"); // main product quantity
+const quantityElement = document.querySelector(".content .quantity");
 const quantityButtons = document.querySelectorAll(".content .quantity-btn");
 
 const totalPriceE = document.getElementById("totalPrice");
+const drawerTotal = document.getElementById("drawerTotal");
 const mainImage = document.querySelector(".main-image img");
 const imgButtons = document.querySelectorAll(".img-btn");
+
+const checkoutBtn = document.getElementById("checkoutBtn");
 
 let basePrice = 249.0;
 
@@ -18,7 +21,6 @@ imgButtons.forEach((btn) => {
     const tempSrc = mainImage.src;
     mainImage.src = clickedImg.src;
     clickedImg.src = tempSrc;
-
     localStorage.setItem("mainImageSrc", mainImage.src);
   });
 });
@@ -27,15 +29,15 @@ imgButtons.forEach((btn) => {
 quantityButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     let quantity = parseInt(quantityElement.textContent);
-
     if (btn.textContent === "+" && quantity < 10) {
       quantity++;
     } else if (btn.textContent === "-" && quantity > 1) {
       quantity--;
     }
-
     quantityElement.textContent = quantity;
-    totalPriceE.textContent = (basePrice * quantity).toFixed(2);
+    const total = (basePrice * quantity).toFixed(2);
+    totalPriceE.textContent = total;
+    drawerTotal.textContent = total;
   });
 });
 
@@ -65,9 +67,9 @@ function loadCartFromStorage() {
   const storedCart = JSON.parse(localStorage.getItem("cartItem"));
   if (storedCart) {
     quantityElement.textContent = storedCart.quantity;
-    totalPriceE.textContent = (storedCart.price * storedCart.quantity).toFixed(
-      2
-    );
+    const total = (storedCart.price * storedCart.quantity).toFixed(2);
+    totalPriceE.textContent = total;
+    drawerTotal.textContent = total;
     renderCartItem(storedCart);
   }
 
@@ -99,7 +101,6 @@ function renderCartItem(product) {
           ).toFixed(2)}</span></p>
         </div>
       </div>
-
       <div class="drawer-quantity-container">
         <div class="quantity-drawer">
           <button class="quantity-btn">-</button>
@@ -128,30 +129,58 @@ function renderCartItem(product) {
       }
 
       qtyElement.textContent = qty;
-      totalPriceElement.textContent = (product.price * qty).toFixed(2);
-      totalPriceE.textContent = (product.price * qty).toFixed(2); // also update main page
-
-      // update quantity in main page
+      const total = (product.price * qty).toFixed(2);
+      totalPriceElement.textContent = total;
+      totalPriceE.textContent = total;
+      drawerTotal.textContent = total;
       quantityElement.textContent = qty;
 
-      // update localStorage
-      const updatedProduct = {
-        ...product,
-        quantity: qty,
-      };
+      const updatedProduct = { ...product, quantity: qty };
       localStorage.setItem("cartItem", JSON.stringify(updatedProduct));
     });
   });
 
-  // delete item
   const deleteBtn = cartItem.querySelector(".delete-btn");
   deleteBtn.addEventListener("click", () => {
     localStorage.removeItem("cartItem");
     cartContent.innerHTML = "";
-    totalPriceE.textContent = basePrice.toFixed(2);
     quantityElement.textContent = "1";
+    const total = basePrice.toFixed(2);
+    totalPriceE.textContent = total;
+    drawerTotal.textContent = total;
   });
 }
+
+// Toast show function
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.textContent = message;
+  toast.style.position = "fixed";
+  toast.style.top = "20px";
+  toast.style.right = "20px";
+  toast.style.padding = "12px 20px";
+  toast.style.background = "#28a745";
+  toast.style.color = "#fff";
+  toast.style.borderRadius = "6px";
+  toast.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+  toast.style.zIndex = "9999";
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+// Checkout button click
+checkoutBtn.addEventListener("click", () => {
+  showToast("✅ Payment Successful!");
+  localStorage.removeItem("cartItem");
+  cartDrawer.classList.remove("open");
+  document.querySelector(".cart-content").innerHTML = "";
+  quantityElement.textContent = "1";
+  totalPriceE.textContent = basePrice.toFixed(2);
+  drawerTotal.textContent = basePrice.toFixed(2);
+});
 
 // On page load
 loadCartFromStorage();
