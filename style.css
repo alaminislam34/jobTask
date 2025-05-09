@@ -111,7 +111,7 @@ body {
   object-fit: cover;
 }
 
-.description {
+.desc {
   font-size: 16px;
   font-weight: 400;
   line-height: 150%;
@@ -384,5 +384,521 @@ body {
   .image-container img {
     width: 60px;
     height: 60px;
+  }
+}
+
+/* features section style ====================================== */
+.features-section {
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #0d1d2e;
+}
+
+.content-section {
+  flex: 1;
+  color: white;
+  opacity: 100%;
+  width: 80%;
+  margin: auto;
+  height: 100%;
+}
+
+.features-images-section {
+  position: relative;
+  width: 50%;
+  height: 90vh;
+}
+
+.features-images-section .image1,
+.features-images-section .image2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.features-images-section .image1 {
+  left: -30%;
+  opacity: 50%;
+}
+
+.features-images-section .image2 {
+  width: 130%;
+  height: 110%;
+  top: -10%;
+  opacity: 50%;
+  rotate: 25deg;
+  right: -20%;
+}
+
+.overlay {
+  background-color: white;
+  opacity: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: overlay;
+}
+
+.badge-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+  gap: 1rem;
+}
+
+.badges {
+  position: absolute;
+  bottom: 35%;
+  left: 15%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #28a745;
+  color: white;
+  display: inline;
+}
+
+/* ========================= */
+/**************************************************** Responsive Design Section ******************************* */
+/* ========================= */
+
+@media (max-width: 1024px) {
+  .features-section {
+    flex-direction: column;
+  }
+
+  .features-images-section {
+    width: 100%;
+    height: 60vh;
+  }
+
+  .content-section {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .badges {
+    bottom: 20%;
+    left: 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-images-section {
+    height: 50vh;
+  }
+
+  .features-images-section .image1 {
+    left: 0;
+  }
+
+  .features-images-section .image2 {
+    width: 120%;
+    right: -10%;
+  }
+
+  .badges {
+    bottom: 15%;
+    left: 8%;
+    gap: 0.5rem;
+  }
+
+  .badge {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-section {
+    min-height: auto;
+  }
+
+  .features-images-section {
+    height: 40vh;
+  }
+
+  .content-section {
+    width: 95%;
+  }
+
+  .badges {
+    bottom: 10%;
+    left: 5%;
+  }
+
+  .badge {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+/* ================================================================================== */
+.image-section {
+  flex: 1;
+  min-width: 300px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.image-placeholder {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  background-color: #ddd;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 18px;
+}
+
+.content-section {
+  flex: 1;
+  min-width: 300px;
+  padding: 50px 40px;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.subtitle {
+  font-size: 60px;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: 0%;
+}
+
+.description {
+  max-width: 500px;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+.green-text {
+  color: #22a701;
+}
+.features {
+  margin-bottom: 40px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.feature-number {
+  font-size: 24px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #28a745;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-right: 15px;
+  min-width: 30px;
+}
+
+.feature-text {
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    flex-direction: column;
+  }
+  .subtitle {
+    font-size: 32px;
+  }
+
+  .image-section,
+  .content-section {
+    padding: 20px 15px;
+  }
+  .title {
+    font-size: 28px;
+  }
+}
+
+/* review section */
+.verified-reviews {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 28px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  color: #333;
+  margin-bottom: 2rem;
+}
+.verified-reviews-title {
+  width: 100%;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #141b4d;
+}
+
+.AllStars {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  color: #7e7e7e;
+  padding: 4px 0;
+}
+.perchentage {
+  width: 120px;
+  height: 15px;
+  position: relative;
+  background-color: #c9c9c9;
+}
+
+.perchentageColor1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #141b4d;
+}
+.perchentageColor2 {
+  position: absolute;
+  width: 35%;
+  height: 100%;
+  background-color: #141b4d;
+}
+.perchentageColor3 {
+  position: absolute;
+  width: 9%;
+  height: 100%;
+  background-color: #141b4d;
+}
+.perchentageColor4 {
+  position: absolute;
+  width: 3%;
+  height: 100%;
+  background-color: #141b4d;
+}
+.perchentageColor5 {
+  position: absolute;
+  width: 6%;
+  height: 100%;
+  background-color: #141b4d;
+}
+
+.allReviewsCount {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #7e7e7e;
+  padding: 4px 0;
+}
+.allReviewsCount div {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.reviews-header {
+  margin-bottom: 30px;
+}
+.stars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.reviews-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #141b4d;
+}
+
+.rating-summary h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #292929;
+}
+
+.stars {
+  color: goldenrod;
+  font-size: 24px;
+  position: relative;
+  display: inline-block;
+}
+
+.half-star {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  width: 50%;
+  overflow: hidden;
+  color: #ffd700;
+}
+
+.rating-summary p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.review-count h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.review-count span {
+  color: #666;
+  font-weight: 400;
+}
+
+.review-card {
+  border-top: 1px solid #e1e1e1;
+  padding: 25px 0;
+}
+
+.reviewer-info {
+  margin-bottom: 15px;
+}
+
+.reviewer-name {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.verified-badge {
+  color: #1a73e8;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.reviewer-location {
+  font-size: 14px;
+  color: #666;
+}
+
+.review-content {
+  margin-left: 0;
+}
+
+.review-stars {
+  color: #ffd700;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.review-text {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.review-body {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #444;
+}
+.review-images {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.review-images img {
+  width: 90px;
+  height: 75px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .reviews-header {
+    margin: 0;
+  }
+  .review-images img {
+    width: 60px;
+    height: 45px;
+    object-fit: cover;
+  }
+  .verified-reviews-title {
+    font-size: 32px;
+  }
+  .AllStars {
+    gap: 5px;
+    color: #7e7e7e;
+    padding: 2px 0;
+  }
+  .perchentage {
+    width: 100px;
+    height: 10px;
+    position: relative;
+    background-color: #c9c9c9;
+  }
+}
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .verified-reviews {
+    padding: 20px 15px;
+  }
+
+  .reviews-header h1 {
+    font-size: 22px;
+  }
+
+  .rating-summary h2 {
+    font-size: 28px;
+  }
+
+  .stars {
+    font-size: 24px;
+  }
+
+  .review-card {
+    padding: 20px 0;
+  }
+
+  .subtitle {
+    font-size: 28px;
   }
 }
